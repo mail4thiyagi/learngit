@@ -2,6 +2,7 @@ package com.test.jerseyrest;
   
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,13 +16,14 @@ import javax.ws.rs.core.UriInfo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
- 
+
 @Path("/ftocservice")
 public class FtoCService {
 	List list;
 	@Context UriInfo uriinfo;
 	@Context HttpHeaders headers;
 	  @GET
+	  @RolesAllowed("ADMIN")
 	  @Produces("application/json")
 	  public Response convertFtoC() throws JSONException {
      
